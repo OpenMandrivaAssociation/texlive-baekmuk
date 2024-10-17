@@ -3,7 +3,7 @@ Version:	56915
 Release:	2
 Summary:	Baekmuk Korean TrueType fonts
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/baekmuk
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/baekmuk
 License:	other-free
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/baekmuk.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/baekmuk.doc.r%{version}.tar.xz
