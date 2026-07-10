@@ -1,38 +1,25 @@
-Name:		texlive-baekmuk
-Version:	56915
-Release:	2
+%global tl_name baekmuk
+%global tl_revision 56915
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.2.1
+Release:	%{tl_revision}.1
 Summary:	Baekmuk Korean TrueType fonts
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/baekmuk
+URL:		https://www.ctan.org/tex-archive/fonts/baekmuk
 License:	other-free
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/baekmuk.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/baekmuk.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/baekmuk.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/baekmuk.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This bundle consists of four Korean fonts: batang.ttf: serif
-dotum.ttf: sans-serif gulim.ttf: sans-serif (rounded)
-hline.ttf: headline These fonts were originally retrieved from
-http://kldp.net/baekmuk/ and are no longer maintained.
+This bundle consists of four Korean fonts: batang.ttf: serif dotum.ttf:
+sans-serif gulim.ttf: sans-serif (rounded) hline.ttf: headline These
+fonts were originally retrieved from http://kldp.net/baekmuk/ and are no
+longer maintained.
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/fonts/truetype/public/baekmuk
-%doc %{_texmfdistdir}/doc/fonts/baekmuk
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
